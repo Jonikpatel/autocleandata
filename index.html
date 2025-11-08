@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Data Cleaning System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>🧹 Advanced Data Cleaning System</h1>
+            <p>ML-Powered Data Cleaning with MCAR/MAR/MNAR Analysis</p>
+        </header>
+
+        <!-- Upload Section -->
+        <section class="upload-section">
+            <h2>📁 Upload Your Data</h2>
+            <input type="file" id="fileInput" accept=".csv" />
+            <button onclick="analyzeData()">Analyze & Clean</button>
+        </section>
+
+        <!-- Results Section -->
+        <section id="results" class="results-section" style="display:none;">
+            <h2>📊 Analysis Results</h2>
+            
+            <!-- Overview -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Total Rows</h3>
+                    <p id="totalRows">-</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Total Columns</h3>
+                    <p id="totalCols">-</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Missing Values</h3>
+                    <p id="missingValues">-</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Issues Found</h3>
+                    <p id="issuesFound">-</p>
+                </div>
+            </div>
+
+            <!-- Visualizations -->
+            <div id="charts">
+                <h3>Missing Data Visualization</h3>
+                <div id="missingChart"></div>
+                
+                <h3>Outlier Detection</h3>
+                <div id="outlierChart"></div>
+            </div>
+
+            <!-- Issues List -->
+            <div id="issuesList">
+                <h3>⚠️ Detected Issues</h3>
+                <ul id="issues"></ul>
+            </div>
+
+            <!-- Download Section -->
+            <div class="download-section">
+                <button onclick="downloadCleanedData()">📥 Download Cleaned Data</button>
+                <button onclick="downloadReport()">📄 Download Report</button>
+            </div>
+        </section>
+
+        <!-- Loading -->
+        <div id="loading" style="display:none;">
+            <p>🔄 Analyzing your data...</p>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
